@@ -51,8 +51,9 @@ p{line-height:1.65}
 .lesson-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
 @media (max-width:980px){.lesson-grid{grid-template-columns:1fr}}
 .teachbox{padding:18px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.16)}
-.teachbox strong{display:block;margin-bottom:8px}
+.teachbox strong{display:block;margin-bottom:8px;font-size:1rem;color:#fff2a8;text-shadow:0 1px 0 rgba(0,0,0,.15)}
 .callout{margin-top:14px;padding:16px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.callout > strong{display:inline-block;margin-bottom:10px;color:#fde68a;font-size:1.05rem}
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
 @media (max-width:980px){.cards-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.cards-grid{grid-template-columns:1fr}}
@@ -75,6 +76,9 @@ p{line-height:1.65}
 .qc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media (max-width:640px){.qc-list{grid-template-columns:1fr}}
 .qc-feedback{display:none;margin-top:12px;padding:14px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16)}
+.qc-feedback.good{display:block;background:rgba(22,163,74,.18);border-color:rgba(22,163,74,.6)}
+.qc-feedback.bad{display:block;background:rgba(220,38,38,.18);border-color:rgba(220,38,38,.6)}
+.keyline{display:block;margin:.35rem 0}.term{font-weight:900;color:#fde68a}.explain-title{display:block;margin-bottom:8px;font-weight:900;color:#bfdbfe}.example-title{display:block;margin-bottom:8px;font-weight:900;color:#fbcfe8}
 .quizmeta{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 .question-card{margin-bottom:14px}
 .question-card h4{margin:0 0 10px;line-height:1.5}
@@ -97,14 +101,8 @@ textarea::placeholder{color:#dbeafe}
 <body>
 <div class="wrap">
   <section class="glass hero">
-    <div class="topbar">
-      <span class="tag">Guided learning</span>
-      <span class="tag">Colorful cards</span>
-      <span class="tag">Multi-page quiz</span>
-      <span class="tag">Sound + summary</span>
-    </div>
     <h1>CBCS Chapter 2<br>Interactive Review</h1>
-    <p class="sub">Move through the lesson pages first, check yourself as you go, then answer the chapter questions in smaller quiz pages instead of one giant screen.</p>
+    <p class="sub">Learn one concept at a time, check yourself as you go, and then move into the quiz in smaller sections.</p>
   </section>
 
   <nav class="mainnav" aria-label="Main navigation">
@@ -118,8 +116,8 @@ textarea::placeholder{color:#dbeafe}
     <div class="grid2">
       <div class="glass panel">
         <h2>How to use this review</h2>
-        <p>Start with the lessons. Each lesson gives a professional explanation, a simpler version, a real-world example, study cards, and a concept check. Then go to the quiz and answer the questions in smaller pages. Finish by generating your study summary and adding your own reflection.</p>
-        <div class="notice">This version uses smaller quiz pages because the earlier one put too many moving parts on one screen.</div>
+        <p>Start with the lessons. Each lesson teaches one concept cluster at a time, then gives you an explanation, an example, study cards, and a concept check before you move into the quiz.</p>
+        <div class="notice">Use the quiz after the lessons. The questions are split into smaller pages so students can focus and not get overloaded.</div>
       </div>
       <div class="glass panel">
         <h2>Live progress</h2>
@@ -131,539 +129,175 @@ textarea::placeholder{color:#dbeafe}
   </section>
 
   <section id="learn" class="page">
-    
-    <article class="glass lesson">
-      <div class="lesson-head">
-        <div>
-          <div style="font-size:1.8rem">🧭</div>
-          <h2>Foundations of Health Insurance</h2>
-          <p class="small">Start here. These terms look similar, but they do different jobs.</p>
-        </div>
-        <button class="actionbtn secondary gotoquiz">Practice after this</button>
-      </div>
-      <div class="lesson-grid">
-        <div class="teachbox"><strong>Professional explanation</strong>Health insurance basics revolve around who owns the policy, who pays claims, what patients owe first, and how the medical record supports continuity of care. A third-party payer provides coverage, the policyholder owns the contract, and a deductible is the amount the patient pays before the plan starts paying covered benefits.</div>
-        <div class="teachbox"><strong>Simplified version</strong>One person owns the plan, one payer covers services, and the patient may still owe money before coverage kicks in.</div>
-        <div class="teachbox"><strong>Example</strong>Example: A patient comes in for a preventive visit. The payer processes the claim, the policyholder is the person on the plan, and the deductible may matter for non-preventive services.</div>
-      </div>
-      <div class="callout">
-        <strong>Study cards</strong>
-        <div class="cards-grid">
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-0-0">
-            <div class="face pink">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Third-party payer</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-0">Reveal</button>
-            </div>
-            <div class="face back pink">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>The outside company or program that provides coverage and pays claims.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-0">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-0-1">
-            <div class="face yellow">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Policyholder</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-1">Reveal</button>
-            </div>
-            <div class="face back yellow">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>The individual who owns the insurance policy contract.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-1">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-0-2">
-            <div class="face mint">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Deductible</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-2">Reveal</button>
-            </div>
-            <div class="face back mint">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>The amount the patient pays before the plan begins paying covered costs.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-2">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-0-3">
-            <div class="face sky">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Preventive examination</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-3">Reveal</button>
-            </div>
-            <div class="face back sky">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>A service that aims to detect problems early.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-3">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-0-4">
-            <div class="face lav">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Continuity of care</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-4">Reveal</button>
-            </div>
-            <div class="face back lav">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Using the record so future providers can understand past care.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-4">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-0-5">
-            <div class="face peach">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Subjective</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-5">Reveal</button>
-            </div>
-            <div class="face back peach">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>The patient’s own words or complaints in SOAP.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-0-5">Flip back</button>
-            </div>
-          </div>
-        </div></div>
-      </div>
-      <div class="qcbox">
-        <h3 style="margin-bottom:8px">Concept check</h3>
-        <p>Which term means the amount the patient pays before insurance starts paying covered benefits?</p>
-        <div class="qc-list"><button class="qc-btn" data-lesson="0" data-choice="0">Copayment</button><button class="qc-btn" data-lesson="0" data-choice="1">Deductible</button><button class="qc-btn" data-lesson="0" data-choice="2">Referral</button><button class="qc-btn" data-lesson="0" data-choice="3">Capitation</button></div>
-        <div class="qc-feedback" id="qc-feedback-0"></div>
-      </div>
-    </article>
-    <article class="glass lesson">
-      <div class="lesson-head">
-        <div>
-          <div style="font-size:1.8rem">🏥</div>
-          <h2>Coverage Types and Big Programs</h2>
-          <p class="small">This is where students confuse group, individual, and public coverage.</p>
-        </div>
-        <button class="actionbtn secondary gotoquiz">Practice after this</button>
-      </div>
-      <div class="lesson-grid">
-        <div class="teachbox"><strong>Professional explanation</strong>Group health insurance is usually employer-subsidized. Individual health insurance is purchased directly when employer coverage is unavailable. Public health insurance includes programs such as Medicare, Medicaid, CHIP, and TRICARE. The Affordable Care Act focused heavily on reforming private health insurance, and COBRA allows eligible workers to continue employer coverage if they pay the required premiums.</div>
-        <div class="teachbox"><strong>Simplified version</strong>Group = through work. Individual = bought on your own. Public = government programs.</div>
-        <div class="teachbox"><strong>Example</strong>Example: Someone loses a job but wants to keep the same plan. COBRA may let that happen, but the person usually has to pay the premiums.</div>
-      </div>
-      <div class="callout">
-        <strong>Study cards</strong>
-        <div class="cards-grid">
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-1-0">
-            <div class="face pink">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Group health insurance</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-0">Reveal</button>
-            </div>
-            <div class="face back pink">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Coverage subsidized by an employer or organization.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-0">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-1-1">
-            <div class="face yellow">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Individual health insurance</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-1">Reveal</button>
-            </div>
-            <div class="face back yellow">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Coverage purchased directly by a person or family.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-1">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-1-2">
-            <div class="face mint">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Public health insurance</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-2">Reveal</button>
-            </div>
-            <div class="face back mint">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Government programs like Medicare, Medicaid, CHIP, and TRICARE.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-2">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-1-3">
-            <div class="face sky">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Medicaid</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-3">Reveal</button>
-            </div>
-            <div class="face back sky">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Title XIX program for eligible low-income individuals.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-3">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-1-4">
-            <div class="face lav">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>ACA</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-4">Reveal</button>
-            </div>
-            <div class="face back lav">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Focused on reforming private health insurance.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-4">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-1-5">
-            <div class="face peach">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Socialized medicine</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-5">Reveal</button>
-            </div>
-            <div class="face back peach">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Government owns facilities and providers may receive salaries.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-1-5">Flip back</button>
-            </div>
-          </div>
-        </div></div>
-      </div>
-      <div class="qcbox">
-        <h3 style="margin-bottom:8px">Concept check</h3>
-        <p>Which type of coverage is usually subsidized by an employer?</p>
-        <div class="qc-list"><button class="qc-btn" data-lesson="1" data-choice="0">Group health insurance</button><button class="qc-btn" data-lesson="1" data-choice="1">Individual health insurance</button><button class="qc-btn" data-lesson="1" data-choice="2">Public health insurance</button><button class="qc-btn" data-lesson="1" data-choice="3">Socialized medicine</button></div>
-        <div class="qc-feedback" id="qc-feedback-1"></div>
-      </div>
-    </article>
-    <article class="glass lesson">
-      <div class="lesson-head">
-        <div>
-          <div style="font-size:1.8rem">📚</div>
-          <h2>Major Laws, Claims, and Documentation</h2>
-          <p class="small">Do not memorize law names as random trivia. Tie each one to one outcome.</p>
-        </div>
-        <button class="actionbtn secondary gotoquiz">Practice after this</button>
-      </div>
-      <div class="lesson-grid">
-        <div class="teachbox"><strong>Professional explanation</strong>The Hill-Burton Act provided funds to modernize hospitals. The Taft-Hartley Act indirectly supported labor-management benefit structures and TPAs. ARRA advanced EHR meaningful use measures. CMS-1500 is the professional claim form for outpatient and office services. Problem-oriented records and SOAP notes organize patient documentation clearly.</div>
-        <div class="teachbox"><strong>Simplified version</strong>Connect each law or system to one clear thing it changed: hospitals, labor plans, EHRs, claim forms, or charting.</div>
-        <div class="teachbox"><strong>Example</strong>Example: If the question says outpatient or office professional claim, think CMS-1500. If it says the patient reports symptoms in their own words, think Subjective.</div>
-      </div>
-      <div class="callout">
-        <strong>Study cards</strong>
-        <div class="cards-grid">
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-2-0">
-            <div class="face pink">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Hill-Burton Act</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-0">Reveal</button>
-            </div>
-            <div class="face back pink">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Federal grants to modernize hospitals.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-0">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-2-1">
-            <div class="face yellow">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Taft-Hartley Act</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-1">Reveal</button>
-            </div>
-            <div class="face back yellow">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Indirectly linked to the rise of TPAs in labor-management benefit structures.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-1">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-2-2">
-            <div class="face mint">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>CMS-1500</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-2">Reveal</button>
-            </div>
-            <div class="face back mint">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Professional claim form used for office and outpatient services.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-2">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-2-3">
-            <div class="face sky">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Problem-oriented record</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-3">Reveal</button>
-            </div>
-            <div class="face back sky">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Database, problem list, initial plan, and progress notes.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-3">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-2-4">
-            <div class="face lav">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>SOAP: Subjective</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-4">Reveal</button>
-            </div>
-            <div class="face back lav">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>The patient’s statements, such as symptoms or complaints.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-4">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-2-5">
-            <div class="face peach">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Meaningful use</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-5">Reveal</button>
-            </div>
-            <div class="face back peach">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>EHR objectives and measures promoted under ARRA.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-2-5">Flip back</button>
-            </div>
-          </div>
-        </div></div>
-      </div>
-      <div class="qcbox">
-        <h3 style="margin-bottom:8px">Concept check</h3>
-        <p>If a patient says, “I have had a sore throat for a week,” which SOAP section is that?</p>
-        <div class="qc-list"><button class="qc-btn" data-lesson="2" data-choice="0">Objective</button><button class="qc-btn" data-lesson="2" data-choice="1">Assessment</button><button class="qc-btn" data-lesson="2" data-choice="2">Plan</button><button class="qc-btn" data-lesson="2" data-choice="3">Subjective</button></div>
-        <div class="qc-feedback" id="qc-feedback-2"></div>
-      </div>
-    </article>
+
     <article class="glass lesson">
       <div class="lesson-head">
         <div>
           <div style="font-size:1.8rem">🧩</div>
-          <h2>Managed Care Models and Cost Control</h2>
-          <p class="small">This part is all about referrals, utilization review, capitation, HMO models, PPOs, and POS plans.</p>
+          <h2>Lesson 1: Who is who in health insurance?</h2>
+          <p class="small">Learn the people and the money roles first. This is the base of the whole chapter.</p>
         </div>
         <button class="actionbtn secondary gotoquiz">Practice after this</button>
       </div>
       <div class="lesson-grid">
-        <div class="teachbox"><strong>Professional explanation</strong>Managed care is designed to coordinate services, control costs, and monitor quality. PCPs coordinate care. Referrals, second surgical opinions, precertification, and utilization management are cost-control and review tools. PPOs use discounted networks with more flexibility. HMOs have several delivery models, including staff, group, IPA, and direct contract. POS plans blend flexibility by allowing in-network care or out-of-network self-referral.</div>
-        <div class="teachbox"><strong>Simplified version</strong>HMO = more structure. PPO = more freedom. POS = a mix. Utilization management checks whether care is necessary and appropriate.</div>
-        <div class="teachbox"><strong>Example</strong>Example: Before elective surgery, a plan may require precertification or a second surgical opinion. If a patient needs a specialist, the PCP may write a referral.</div>
+        <div class="teachbox"><strong>Key concepts</strong><span class="keyline"><span class="term">Policy</span> means the insurance contract itself.</span><span class="keyline"><span class="term">Policyholder</span> means the person who owns that contract.</span><span class="keyline"><span class="term">Third-party payer</span> means the insurance company or government program that pays covered claims.</span><span class="keyline"><span class="term">Deductible</span> means the amount the patient pays first before the plan starts paying covered benefits.</span></div>
+        <div class="teachbox"><span class="explain-title">Explanation</span>A health insurance policy is a contract. The person attached to ownership of that contract is the policyholder. The outside entity that provides coverage and pays covered claims is the third-party payer. Even when insurance exists, the patient may still owe a portion first, and that amount may be the deductible.</div>
+        <div class="teachbox"><span class="example-title">Example</span>Maria signs up for family coverage through work. Maria is the <span class="term">policyholder</span> because the contract is in her name. Blue Cross is the <span class="term">third-party payer</span> because it pays covered claims. If Maria has not met her <span class="term">deductible</span>, she pays that amount first before the plan starts paying covered charges.</div>
       </div>
       <div class="callout">
         <strong>Study cards</strong>
         <div class="cards-grid">
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-3-0">
-            <div class="face pink">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>PCP</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-0">Reveal</button>
-            </div>
-            <div class="face back pink">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>The provider who supervises and coordinates care.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-0">Flip back</button>
-            </div>
-          </div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-a1"><div class="face pink"><div><div class="eyebrow">Front</div><h4>Policyholder</h4></div><button class="flip-toggle" data-flip="flip-a1">Reveal</button></div><div class="face back pink"><div><div class="eyebrow">Back</div><p>The person who owns the insurance contract.</p></div><button class="flip-toggle" data-flip="flip-a1">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-a2"><div class="face yellow"><div><div class="eyebrow">Front</div><h4>Third-party payer</h4></div><button class="flip-toggle" data-flip="flip-a2">Reveal</button></div><div class="face back yellow"><div><div class="eyebrow">Back</div><p>The outside company or program that provides coverage and pays claims.</p></div><button class="flip-toggle" data-flip="flip-a2">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-a3"><div class="face mint"><div><div class="eyebrow">Front</div><h4>Deductible</h4></div><button class="flip-toggle" data-flip="flip-a3">Reveal</button></div><div class="face back mint"><div><div class="eyebrow">Back</div><p>The amount the patient pays first before the plan starts paying covered benefits.</p></div><button class="flip-toggle" data-flip="flip-a3">Flip back</button></div></div></div>
         </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-3-1">
-            <div class="face yellow">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Physician referral</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-1">Reveal</button>
-            </div>
-            <div class="face back yellow">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>A written order from the PCP to a specialist.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-1">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-3-2">
-            <div class="face mint">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Utilization management</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-2">Reveal</button>
-            </div>
-            <div class="face back mint">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Reviewing the necessity and appropriateness of care.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-2">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-3-3">
-            <div class="face sky">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>Capitation</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-3">Reveal</button>
-            </div>
-            <div class="face back sky">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>A fixed payment amount for care of enrollees.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-3">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-3-4">
-            <div class="face lav">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>PPO</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-4">Reveal</button>
-            </div>
-            <div class="face back lav">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Discounted network with more flexibility.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-4">Flip back</button>
-            </div>
-          </div>
-        </div>
-        <div class="flip-wrap">
-          <div class="flip-card" id="flip-3-5">
-            <div class="face peach">
-              <div>
-                <div class="eyebrow">Tap to flip</div>
-                <h4>POS plan</h4>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-5">Reveal</button>
-            </div>
-            <div class="face back peach">
-              <div>
-                <div class="eyebrow">Meaning</div>
-                <p>Allows network use or out-of-network self-referral.</p>
-              </div>
-              <button class="flip-toggle" data-flip="flip-3-5">Flip back</button>
-            </div>
-          </div>
-        </div></div>
       </div>
       <div class="qcbox">
-        <h3 style="margin-bottom:8px">Concept check</h3>
-        <p>Which type of plan allows a patient to use network providers or self-refer outside the network?</p>
-        <div class="qc-list"><button class="qc-btn" data-lesson="3" data-choice="0">Staff model HMO</button><button class="qc-btn" data-lesson="3" data-choice="1">Point-of-service plan</button><button class="qc-btn" data-lesson="3" data-choice="2">Group model HMO</button><button class="qc-btn" data-lesson="3" data-choice="3">Capitation plan</button></div>
-        <div class="qc-feedback" id="qc-feedback-3"></div>
+        <h3>Concept check</h3>
+        <p class="small">If a question asks, “Who provides health insurance coverage?” think about who pays the claim, not who owns the policy.</p>
+        <div class="qc-list">
+          <button class="qc-btn" data-qc="qc1" data-correct="0">Policyholder</button>
+          <button class="qc-btn" data-qc="qc1" data-correct="1">Third-party payer</button>
+        </div>
+        <div id="qc1" class="qc-feedback" data-correct-text="Correct. The third-party payer is the outside company or government program that provides coverage and pays covered claims." data-wrong-text="Not quite. The policyholder owns the contract, but the third-party payer is the one that provides coverage and pays covered claims."></div>
       </div>
     </article>
+
+    <article class="glass lesson">
+      <div class="lesson-head">
+        <div>
+          <div style="font-size:1.8rem">🏥</div>
+          <h2>Lesson 2: Types of coverage</h2>
+          <p class="small">Do not blend these terms together. Each coverage type answers a different question.</p>
+        </div>
+        <button class="actionbtn secondary gotoquiz">Practice after this</button>
+      </div>
+      <div class="lesson-grid">
+        <div class="teachbox"><strong>Key concepts</strong><span class="keyline"><span class="term">Group health insurance</span> is coverage tied to an employer or organization.</span><span class="keyline"><span class="term">Individual health insurance</span> is coverage a person or family buys directly.</span><span class="keyline"><span class="term">Public health insurance</span> is government coverage for eligible individuals.</span></div>
+        <div class="teachbox"><span class="explain-title">Explanation</span>These terms answer different questions. Group coverage asks whether the plan comes through a job or organization. Individual coverage asks whether the person buys the plan directly. Public coverage asks whether the program is a government plan such as Medicare, Medicaid, CHIP, or TRICARE.</div>
+        <div class="teachbox"><span class="example-title">Example</span>A worker insured through her company has <span class="term">group health insurance</span>. A freelancer who buys a marketplace plan has <span class="term">individual health insurance</span>. A child covered by CHIP is using <span class="term">public health insurance</span>.</div>
+      </div>
+      <div class="callout">
+        <strong>Study cards</strong>
+        <div class="cards-grid">
+          <div class="flip-wrap"><div class="flip-card" id="flip-b1"><div class="face sky"><div><div class="eyebrow">Front</div><h4>Group health insurance</h4></div><button class="flip-toggle" data-flip="flip-b1">Reveal</button></div><div class="face back sky"><div><div class="eyebrow">Back</div><p>Coverage subsidized by an employer or organization.</p></div><button class="flip-toggle" data-flip="flip-b1">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-b2"><div class="face lav"><div><div class="eyebrow">Front</div><h4>Individual health insurance</h4></div><button class="flip-toggle" data-flip="flip-b2">Reveal</button></div><div class="face back lav"><div><div class="eyebrow">Back</div><p>Coverage a person or family purchases directly.</p></div><button class="flip-toggle" data-flip="flip-b2">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-b3"><div class="face peach"><div><div class="eyebrow">Front</div><h4>Public health insurance</h4></div><button class="flip-toggle" data-flip="flip-b3">Reveal</button></div><div class="face back peach"><div><div class="eyebrow">Back</div><p>Government coverage such as Medicare, Medicaid, CHIP, and TRICARE.</p></div><button class="flip-toggle" data-flip="flip-b3">Flip back</button></div></div></div>
+        </div>
+      </div>
+      <div class="qcbox">
+        <h3>Concept check</h3>
+        <p class="small">A family has no employer coverage and buys a plan on its own. What type is that?</p>
+        <div class="qc-list">
+          <button class="qc-btn" data-qc="qc2" data-correct="0">Group health insurance</button>
+          <button class="qc-btn" data-qc="qc2" data-correct="1">Individual health insurance</button>
+          <button class="qc-btn" data-qc="qc2" data-correct="0">Public health insurance</button>
+        </div>
+        <div id="qc2" class="qc-feedback" data-correct-text="Correct. When a person or family buys a plan directly because there is no employer coverage, that is individual health insurance." data-wrong-text="Not quite. Group coverage comes through an employer or organization, and public coverage is a government program. Buying a plan directly points to individual health insurance."></div>
+      </div>
+    </article>
+
+    <article class="glass lesson">
+      <div class="lesson-head">
+        <div>
+          <div style="font-size:1.8rem">📚</div>
+          <h2>Lesson 3: Major laws and historical milestones</h2>
+          <p class="small">This part is about matching the law to the purpose. Stop trying to memorize random names without a job attached to each one.</p>
+        </div>
+        <button class="actionbtn secondary gotoquiz">Practice after this</button>
+      </div>
+      <div class="lesson-grid">
+        <div class="teachbox"><strong>Key concepts</strong><span class="keyline"><span class="term">Hill-Burton Act</span> funded hospital construction and modernization.</span><span class="keyline"><span class="term">Medicaid</span> is Title XIX and covers eligible low-income individuals.</span><span class="keyline"><span class="term">COBRA</span> allows eligible workers to continue coverage after job-related benefit loss if they pay the premium.</span></div>
+        <div class="teachbox"><span class="explain-title">Explanation</span>Laws are easier to remember when you attach each one to one job. Hill-Burton is about hospitals. Medicaid is about a public program for eligible low-income people. COBRA is about continuing coverage after benefits would otherwise end.</div>
+        <div class="teachbox"><span class="example-title">Example</span>If the test asks which law helped modernize hospitals after the Depression and World War II, think <span class="term">Hill-Burton</span>. If it asks which program is Title XIX for eligible low-income individuals, think <span class="term">Medicaid</span>. If it asks how a worker keeps health coverage after leaving a job, think <span class="term">COBRA</span>.</div>
+      </div>
+      <div class="callout">
+        <strong>Study cards</strong>
+        <div class="cards-grid">
+          <div class="flip-wrap"><div class="flip-card" id="flip-c1"><div class="face yellow"><div><div class="eyebrow">Front</div><h4>Hill-Burton Act</h4></div><button class="flip-toggle" data-flip="flip-c1">Reveal</button></div><div class="face back yellow"><div><div class="eyebrow">Back</div><p>Federal grants for hospital construction and modernization.</p></div><button class="flip-toggle" data-flip="flip-c1">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-c2"><div class="face mint"><div><div class="eyebrow">Front</div><h4>Medicaid</h4></div><button class="flip-toggle" data-flip="flip-c2">Reveal</button></div><div class="face back mint"><div><div class="eyebrow">Back</div><p>Title XIX program for eligible low-income individuals.</p></div><button class="flip-toggle" data-flip="flip-c2">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-c3"><div class="face pink"><div><div class="eyebrow">Front</div><h4>COBRA</h4></div><button class="flip-toggle" data-flip="flip-c3">Reveal</button></div><div class="face back pink"><div><div class="eyebrow">Back</div><p>Continuation coverage after benefits end, if the eligible person pays the premium.</p></div><button class="flip-toggle" data-flip="flip-c3">Flip back</button></div></div></div>
+        </div>
+      </div>
+      <div class="qcbox">
+        <h3>Concept check</h3>
+        <p class="small">Which one is about keeping existing coverage after losing a job?</p>
+        <div class="qc-list">
+          <button class="qc-btn" data-qc="qc3" data-correct="0">Hill-Burton Act</button>
+          <button class="qc-btn" data-qc="qc3" data-correct="1">COBRA</button>
+          <button class="qc-btn" data-qc="qc3" data-correct="0">Medicaid</button>
+        </div>
+        <div id="qc3" class="qc-feedback" data-correct-text="Correct. COBRA is the law that allows eligible workers to continue coverage after benefits would otherwise end, as long as they pay the premium." data-wrong-text="Not quite. Hill-Burton is about hospital modernization, and Medicaid is a public program. COBRA is the one tied to continuation coverage."></div>
+      </div>
+    </article>
+
+    <article class="glass lesson">
+      <div class="lesson-head">
+        <div>
+          <div style="font-size:1.8rem">🧾</div>
+          <h2>Lesson 4: Claims, forms, and billing infrastructure</h2>
+          <p class="small">These questions test which form or system fits the service setting.</p>
+        </div>
+        <button class="actionbtn secondary gotoquiz">Practice after this</button>
+      </div>
+      <div class="lesson-grid">
+        <div class="teachbox"><strong>Key concepts</strong><span class="keyline"><span class="term">CMS-1500</span> is the claim form for professional outpatient and office services.</span><span class="keyline"><span class="term">Per diem</span> means reimbursement based on a daily rate.</span><span class="keyline"><span class="term">Physician referral</span> is a written PCP order that sends the patient to a specialist.</span></div>
+        <div class="teachbox"><span class="explain-title">Explanation</span>Billing questions often mix forms, payment methods, and care-management tools. Keep them separate. A claim form tells you what document is used to bill. A payment term tells you how money is calculated. A referral tells you how the patient is directed to another provider.</div>
+        <div class="teachbox"><span class="example-title">Example</span>A physician office billing Medicare for an outpatient visit uses the <span class="term">CMS-1500</span>. If the question asks about payment by day, that is <span class="term">per diem</span>. If the PCP sends the patient to a cardiologist, that is a <span class="term">physician referral</span>.</div>
+      </div>
+      <div class="callout">
+        <strong>Study cards</strong>
+        <div class="cards-grid">
+          <div class="flip-wrap"><div class="flip-card" id="flip-d1"><div class="face sky"><div><div class="eyebrow">Front</div><h4>CMS-1500</h4></div><button class="flip-toggle" data-flip="flip-d1">Reveal</button></div><div class="face back sky"><div><div class="eyebrow">Back</div><p>Claim form for professional outpatient and office services.</p></div><button class="flip-toggle" data-flip="flip-d1">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-d2"><div class="face lav"><div><div class="eyebrow">Front</div><h4>Per diem</h4></div><button class="flip-toggle" data-flip="flip-d2">Reveal</button></div><div class="face back lav"><div><div class="eyebrow">Back</div><p>Payment based on a daily rate.</p></div><button class="flip-toggle" data-flip="flip-d2">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-d3"><div class="face peach"><div><div class="eyebrow">Front</div><h4>Physician referral</h4></div><button class="flip-toggle" data-flip="flip-d3">Reveal</button></div><div class="face back peach"><div><div class="eyebrow">Back</div><p>A written PCP order that sends a patient to a specialist for evaluation or treatment.</p></div><button class="flip-toggle" data-flip="flip-d3">Flip back</button></div></div></div>
+        </div>
+      </div>
+      <div class="qcbox">
+        <h3>Concept check</h3>
+        <p class="small">A physician office is billing Medicare for an outpatient service. Which answer fits best?</p>
+        <div class="qc-list">
+          <button class="qc-btn" data-qc="qc4" data-correct="1">CMS-1500</button>
+          <button class="qc-btn" data-qc="qc4" data-correct="0">Per diem</button>
+        </div>
+        <div id="qc4" class="qc-feedback" data-correct-text="Correct. CMS-1500 is the professional claim form used for office and outpatient services." data-wrong-text="Not quite. Per diem is a payment method, not a claim form. The best answer for a physician office outpatient claim is CMS-1500."></div>
+      </div>
+    </article>
+
+    <article class="glass lesson">
+      <div class="lesson-head">
+        <div>
+          <div style="font-size:1.8rem">🔄</div>
+          <h2>Lesson 5: Managed care and cost control</h2>
+          <p class="small">Now move into referral rules, utilization controls, and how plans manage cost.</p>
+        </div>
+        <button class="actionbtn secondary gotoquiz">Practice after this</button>
+      </div>
+      <div class="lesson-grid">
+        <div class="teachbox"><strong>Key concepts</strong><span class="keyline"><span class="term">Referral</span> sends a patient from the PCP to a specialist.</span><span class="keyline"><span class="term">Preauthorization / precertification</span> means the plan must approve certain services before they happen.</span><span class="keyline"><span class="term">Capitation</span> means the provider is paid a fixed amount instead of billing each service separately.</span></div>
+        <div class="teachbox"><span class="explain-title">Explanation</span>Managed care controls cost and access by setting rules before care is delivered. One rule decides whether the patient needs a referral to see a specialist. Another rule decides whether the plan must approve a service in advance. Payment rules may also change, and one example is capitation, which pays a fixed amount rather than paying separately for each service.</div>
+        <div class="teachbox"><span class="example-title">Example</span>If an HMO patient wants to see an orthopedist, the PCP may need to issue a <span class="term">referral</span>. If the patient needs a planned surgery, the plan may require <span class="term">preauthorization</span>. If a provider group is paid one set amount per member each month, that arrangement is called <span class="term">capitation</span>.</div>
+      </div>
+      <div class="callout">
+        <strong>Study cards</strong>
+        <div class="cards-grid">
+          <div class="flip-wrap"><div class="flip-card" id="flip-e1"><div class="face mint"><div><div class="eyebrow">Front</div><h4>Referral</h4></div><button class="flip-toggle" data-flip="flip-e1">Reveal</button></div><div class="face back mint"><div><div class="eyebrow">Back</div><p>PCP order that allows specialty evaluation or treatment.</p></div><button class="flip-toggle" data-flip="flip-e1">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-e2"><div class="face yellow"><div><div class="eyebrow">Front</div><h4>Preauthorization / precertification</h4></div><button class="flip-toggle" data-flip="flip-e2">Reveal</button></div><div class="face back yellow"><div><div class="eyebrow">Back</div><p>Plan approval required before certain hospitalizations or services.</p></div><button class="flip-toggle" data-flip="flip-e2">Flip back</button></div></div></div>
+          <div class="flip-wrap"><div class="flip-card" id="flip-e3"><div class="face pink"><div><div class="eyebrow">Front</div><h4>Capitation</h4></div><button class="flip-toggle" data-flip="flip-e3">Reveal</button></div><div class="face back pink"><div><div class="eyebrow">Back</div><p>A fixed payment arrangement used to pay for care under some managed care models.</p></div><button class="flip-toggle" data-flip="flip-e3">Flip back</button></div></div></div>
+        </div>
+      </div>
+      <div class="qcbox">
+        <h3>Concept check</h3>
+        <p class="small">Which concept means approval before the service is performed?</p>
+        <div class="qc-list">
+          <button class="qc-btn" data-qc="qc5" data-correct="0">Referral</button>
+          <button class="qc-btn" data-qc="qc5" data-correct="1">Preauthorization / precertification</button>
+          <button class="qc-btn" data-qc="qc5" data-correct="0">Capitation</button>
+        </div>
+        <div id="qc5" class="qc-feedback" data-correct-text="Correct. Preauthorization or precertification means the plan must approve certain services before they happen." data-wrong-text="Not quite. A referral sends the patient to a specialist, and capitation is a payment model. Advance plan approval points to preauthorization or precertification."></div>
+      </div>
+    </article>
+
   </section>
 
   <section id="quiz" class="page">
@@ -787,13 +421,14 @@ document.querySelectorAll('.flip-toggle').forEach(btn => btn.addEventListener('c
 }));
 
 document.querySelectorAll('.qc-btn').forEach(btn => btn.addEventListener('click', () => {
-  const lessonIndex = Number(btn.dataset.lesson);
-  const choiceIndex = Number(btn.dataset.choice);
-  const lesson = LESSONS[lessonIndex];
-  const fb = document.getElementById(`qc-feedback-${lessonIndex}`);
-  const correct = choiceIndex === lesson.qc_answer;
-  fb.style.display = 'block';
-  fb.innerHTML = `<strong>${correct ? 'Correct' : 'Not quite'}</strong><br>${lesson.qc_why}`;
+  const targetId = btn.dataset.qc;
+  const fb = document.getElementById(targetId);
+  const group = document.querySelectorAll(`.qc-btn[data-qc="${targetId}"]`);
+  group.forEach(b => { b.style.outline = 'none'; b.classList.remove('picked-good','picked-bad'); });
+  const correct = btn.dataset.correct === '1';
+  btn.style.outline = correct ? '3px solid rgba(22,163,74,.9)' : '3px solid rgba(220,38,38,.9)';
+  fb.className = 'qc-feedback ' + (correct ? 'good' : 'bad');
+  fb.innerHTML = `<strong>${correct ? 'Correct' : 'Not quite'}</strong><br>${correct ? fb.dataset.correctText : fb.dataset.wrongText}`;
   playTone(correct ? 'correct' : 'wrong');
 }));
 
